@@ -36,7 +36,8 @@ let html = `
   </head>
   <body>
     <h1>Welcome to the Internet!</h1>
-    <h2>Image Gallery - ${imageDir}</h2>
+    <h2>Image Gallery</h2>
+    ${ findImages(imageDir).map(x => `<img src="file://${x}" />`).join("") }
   </body>
 </html>
 `
