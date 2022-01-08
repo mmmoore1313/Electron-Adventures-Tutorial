@@ -13,7 +13,7 @@ if (argv.length >= 3) {
 }
 
 let findImages = (dir) => {
-  let files = fs.readeirSync(dir)
+  let files = fs.readdirSync(dir)
   files.sort()
   return files
     .filter(x => /\.(png|jpg|jpeg|gif)/i.test(x))
