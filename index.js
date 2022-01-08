@@ -23,6 +23,17 @@ let findImages = (dir) => {
 let html = `
 <!DOCTYPE html>
 <html>
+  <head>
+    <style>
+      body { 
+        background-color: black;
+        color: white;
+      }
+      img {
+        padding: 10px;
+      }
+    </style>
+  </head>
   <body>
     <h1>Welcome to the Internet!</h1>
     <h2>Image Gallery - ${imageDir}</h2>
