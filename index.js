@@ -64,7 +64,7 @@ let html = `
 // }
 
 function createWindow() {
-  let win = new BrowserWindow({})
+  let win = new BrowserWindow({webPreferences: { webSecurity: false }})
   win.maximize()
   win.loadURL(`data:text/html;charset=utf-8,${encodeURI(html)}`) // reads the html variable from above
 }
