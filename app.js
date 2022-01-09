@@ -1,6 +1,7 @@
 // episode 5: Display Free Disk Space
 function displayFreeDiskSpace(data) {
-  let infor = document.querySelector('#info')
+  let info = document.querySelector("#info")
+
   for (let row of data) {
     let total = parseInt(row[1])
     let used = parseInt(row[2])
@@ -11,7 +12,7 @@ function displayFreeDiskSpace(data) {
     } else {
       percent = 0
     }
-    let dic = document.createElement("div")
+    let div = document.createElement("div")
     div.append(`${path}: ${percent}% used (${used}/${total})`)
     info.append(div)
   }
