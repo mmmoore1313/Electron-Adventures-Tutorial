@@ -14,7 +14,7 @@ function df() {
     .slice(1)
   return rows.map(row => (
     row
-      .replace(/\s+(\d+))
+      .replace(/\s+(\d+)/g, '\t$1')
       .replace(/\s+\//g, '\t/')
       .split(/\t/)
   ))
