@@ -1,14 +1,32 @@
-// let child_process = require("child_process")
-// let fs = require("fs")
-// let path = require("path")
+let child_process = require("child_process")
 let { app, BrowserWindow } = require("electron")
 
+let runCommand = (command) => {
+  return child_process.execSync(command).toString().trim()
+}
 
+function df() {
+  let output = runCommand("df -kP")
+  let rows = output
+    .split(/[\r\n]+/)
+    .slice(1)
+  return rows.map(row => (
+    row
+      .replace(/\s+(\d+))
+      .replace(/\s+\//g, '\t/')
+      .split(/\t/)
+  ))
+}
 
 function createWindow() {
+  let payload = JSON.stringify(df())
   let win = new BrowserWindow({})
   win.maximize()
-  win.loadFile(`file:${__dirname}/index.html?${toQueryString(sysInfo)}`) // finds the index.html in any directory
+  win.loadFile('index.html') // loads the html in the index.html
+  
+  win.webContents.on('did-finish-load', function () {
+    win.webContents.executeJavaScript(`displayFreeDiskSpace(${payload})`)
+  })
 }
 
 
