@@ -1,4 +1,7 @@
+// episode 8: Terminal App Styling
+
 // episode 7: Visualize Free Disk Space in Terminal
+// episode7 was a run through of terminal visualization with Ruby
 
 // episode 6: Use D3 to Visualize Free Disk Space
 // function displayFreeDiskSpace(data) {
