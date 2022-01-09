@@ -1,4 +1,4 @@
-// episode 7: Visualize Free Disk Space in Terminal
+// episdoe 8: Terminal App Styling
 let { app, BrowserWindow } = require("electron")
 const electronReload = require('electron-reload')
 
@@ -13,6 +13,22 @@ app.on("ready", createWindow)
 app.on("window-all-closed", () => {
   app.quit()
 })
+
+// episode 7: Visualize Free Disk Space in Terminal
+// let { app, BrowserWindow } = require("electron")
+// const electronReload = require('electron-reload')
+// 
+// function createWindow() {
+//   let win = new BrowserWindow({})
+//   win.maximize()
+//   win.loadFile("index.html")
+// }
+// 
+// app.on("ready", createWindow)
+// 
+// app.on("window-all-closed", () => {
+//   app.quit()
+// })
 
 // episode 6: Use D3 to Visualize Free Disk Space
 // let child_process = require("child_process")
