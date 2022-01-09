@@ -17,6 +17,13 @@ app.on("ready", createWindow)
 app.on("window-all-closed", () => {
   app.quit()
 })
+
+
+// episode 4: Image Gallery with Dynamic HTML
+// let fs = require("fs")
+// let path = require("path")
+// let { app, BrowserWindow } = require("electron")
+// 
 // let imageDir
 // let argv = process.argv
 // 
@@ -55,6 +62,24 @@ app.on("window-all-closed", () => {
 //   </body>
 // </html>
 // `
+// 
+// function createWindow() {
+//   let win = new BrowserWindow({webPreferences: { webSecurity: false }})
+//   win.maximize()
+//   win.loadURL(`data:text/html;charset=utf-8,${encodeURI(html)}`) // reads the html variable from above
+// }
+// 
+// app.on("ready", createWindow)
+// 
+// app.on("window-all-closed", () => {
+//   app.quit()
+// })
+
+// episode3: What Can Backend Code Even Do?
+// let child_process = require("child_process")
+// let { app, BrowserWindow } = require("electron")
+// 
+// 
 // let runCommand = (command) => {
 //   return child_process.execSync(command).toString().trim()
 // }
@@ -76,10 +101,16 @@ app.on("window-all-closed", () => {
 //   hostname: runCommand("hostname -s"),
 //   ip: runCommand("ipConfig getifaddr en0"),
 // }
-
+// 
 // function createWindow() {
-//   let win = new BrowserWindow({webPreferences: { webSecurity: false }}) // removes webSecurity so that images can render
+//   let win = new BrowserWindow({})
 //   win.maximize()
-//   win.loadURL(`data:text/html;charset=utf-8,${encodeURI(html)}`) // reads the html variable from above
+//   win.loadFile(`file:${__dirname}/index.html?${toQueryString(sysInfo)}`) // finds the index.html in any directory
 // }
+// 
+// app.on("ready", createWindow)
+// 
+// app.on("window-all-closed", () => {
+//   app.quit()
+// })
 
