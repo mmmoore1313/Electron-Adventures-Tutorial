@@ -1,5 +1,6 @@
 // episode 9: Terminal App
 let form = document.querySelector("form")
+let input = document.querySelector("input")
 // episode 8: Terminal App Styling
 // syling was done mainly in the index.html and the app.css
 
