@@ -1,7 +1,5 @@
 // app.js is the JS that runs the frontend
 // episode 10: Preload Script
-let child_process = require("child_process")
-
 let form = document.querySelector("form")
 let input = document.querySelector("input")
 let terminalHistory = document.querySelector("#history")
@@ -35,11 +33,12 @@ function createTerminalHistoryEntry(command, commandOutput) {
 form.addEventListener("submit", (e) => {
   e.preventDefault()
   let command = input.value
-  let output = child_process.execSync(command).toString().trim()
+  let output = window.api.runCommand(command)
   createTerminalHistoryEntry(command, output)
   input.value = ""
   input.scrollIntoView()
 })
+
 // episode 9: Terminal App   
 // let child_process = require("child_process")
 // 
