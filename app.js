@@ -1,5 +1,5 @@
 // app.js is the JS that runs the frontend
-// episode 10: Preload Script
+// episode 11: JQuery
 let form = document.querySelector("form")
 let input = document.querySelector("input")
 let terminalHistory = document.querySelector("#history")
@@ -38,6 +38,46 @@ form.addEventListener("submit", (e) => {
   input.value = ""
   input.scrollIntoView()
 })
+
+// episode 10: Preload Script
+// let form = document.querySelector("form")
+// let input = document.querySelector("input")
+// let terminalHistory = document.querySelector("#history")
+// 
+// function createInputLine(command) {
+//   let inputLine = document.createElement("div")
+//   inputLine.className = "input-line"
+// 
+//   let promptSpan = document.createElement("span")
+//   promptSpan.className = "prompt"
+//   promptSpan.append("$")
+//   let inputSpan = document.createElement("span")
+//   inputSpan.className = "input"
+//   inputSpan.append(command)
+// 
+//   inputLine.append(promptSpan)
+//   inputLine.append(inputSpan)
+// 
+//   return inputLine
+// }
+// 
+// function createTerminalHistoryEntry(command, commandOutput) {
+//   let inputLine = createInputLine(command)
+//   let output = document.createElement("div")
+//   output.className = "output"
+//   output.append(commandOutput)
+//   terminalHistory.append(inputLine)
+//   terminalHistory.append(output)
+// }
+// 
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault()
+//   let command = input.value
+//   let output = window.api.runCommand(command)
+//   createTerminalHistoryEntry(command, output)
+//   input.value = ""
+//   input.scrollIntoView()
+// })
 
 // episode 9: Terminal App   
 // let child_process = require("child_process")
