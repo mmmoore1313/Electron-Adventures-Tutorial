@@ -19,6 +19,15 @@ function createInputLine(command) {
   
   return inputLine
 }
+
+function createTerminalHistoryEntry(command, commandOutput) {
+  let inputLine = createInputLine(command)
+  let output = document.createElement('div')
+  output.className = 'output'
+  output.append(commandOutput)
+  terminalHistory.append(inputLine)
+  terminalHistory.append(output)
+}
 // episode 8: Terminal App Styling
 // syling was done mainly in the index.html and the app.css
 
