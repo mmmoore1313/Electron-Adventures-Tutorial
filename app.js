@@ -1,3 +1,4 @@
+// app.js is the JS that runs the frontend
 // episode 10: Preload Script
 
 // episode 9: Terminal App   
@@ -41,6 +42,7 @@
 //   input.value = ""
 //   input.scrollIntoView()
 // })
+
 // episode 8: Terminal App Styling
 // syling was done mainly in the index.html and the app.css
 
