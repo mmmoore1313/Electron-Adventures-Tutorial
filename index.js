@@ -1,4 +1,22 @@
 // episode 10: Preload Script
+let { app, BrowserWindow } = require("electron")
+const electronReload = require('electron-reload')
+
+function createWindow() {
+  let win = new BrowserWindow({
+    webPreferences: {
+      preload: `${__dirname}/preload.js`,
+    }
+  })
+  win.maximize()
+  win.loadFile("index.html")
+}
+
+app.on("ready", createWindow)
+
+app.on("window-all-closed", () => {
+  app.quit()
+})
 
 // episode 9: Terminal App
 // let { app, BrowserWindow } = require("electron")
