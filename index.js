@@ -5,7 +5,8 @@ const electronReload = require('electron-reload')
 function createWindow() {
   let win = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   })
   win.maximize()
