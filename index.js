@@ -1,23 +1,25 @@
+// episode 10: Preload Script
+
 // episode 9: Terminal App
-let { app, BrowserWindow } = require("electron")
-const electronReload = require('electron-reload')
-
-function createWindow() {
-  let win = new BrowserWindow({
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-    }
-  })
-  win.maximize()
-  win.loadFile("index.html")
-}
-
-app.on("ready", createWindow)
-
-app.on("window-all-closed", () => {
-  app.quit()
-})
+// let { app, BrowserWindow } = require("electron")
+// const electronReload = require('electron-reload')
+// 
+// function createWindow() {
+//   let win = new BrowserWindow({
+//     webPreferences: {
+//       nodeIntegration: true,
+//       contextIsolation: false,
+//     }
+//   })
+//   win.maximize()
+//   win.loadFile("index.html")
+// }
+// 
+// app.on("ready", createWindow)
+// 
+// app.on("window-all-closed", () => {
+//   app.quit()
+// })
 
 // episode 8: Terminal App Styling
 // let { app, BrowserWindow } = require("electron")
