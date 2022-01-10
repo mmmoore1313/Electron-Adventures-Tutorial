@@ -29,6 +29,15 @@ function createTerminalHistoryEntry(command, commandOutput) {
   terminalHistory.append(inputLine)
   terminalHistory.append(output)
 }
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  let command = input.value
+  let output = child_process.execSync(command).tostring().trim()
+  createTerminalHistoryEntry(command, output)
+  input.value = ''
+  input.scrollIntoView()
+})
 // episode 8: Terminal App Styling
 // syling was done mainly in the index.html and the app.css
 
