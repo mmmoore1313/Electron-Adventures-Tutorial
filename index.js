@@ -3,7 +3,11 @@ let { app, BrowserWindow } = require("electron")
 const electronReload = require('electron-reload')
 
 function createWindow() {
-  let win = new BrowserWindow({})
+  let win = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
   win.maximize()
   win.loadFile("index.html")
 }
