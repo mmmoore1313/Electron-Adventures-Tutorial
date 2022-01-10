@@ -2,6 +2,23 @@
 let form = document.querySelector("form")
 let input = document.querySelector("input")
 let terminalHistory = document.querySelector('#history')
+
+function createInputLine(command) {
+  let inputLine = document.createElement('div')
+  inputLine.className = 'input-line'
+  
+  let promptSpan = document.createElement('span')
+  promptSpan.className = 'prompt'
+  promptSpan.append('$')
+  let inputSpan = document.createElement('span')
+  inputSpan.className = 'input'
+  inputSpan.append(command)
+  
+  inputLine.append(promptSpan)
+  inputLine.append(inputSpan)
+  
+  return inputLine
+}
 // episode 8: Terminal App Styling
 // syling was done mainly in the index.html and the app.css
 
