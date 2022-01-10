@@ -1,4 +1,5 @@
 // episode 9: Terminal App
+let child_process = require('child_process')
 let form = document.querySelector("form")
 let input = document.querySelector("input")
 let terminalHistory = document.querySelector('#history')
