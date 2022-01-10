@@ -1,4 +1,57 @@
+/* episode 9: Terminal App */
 body {
+  background-color: #444;
+  color: #fff;
+}
+
+h1 {
+  font-family: monospace;
+}
+
+#terminal {
+  font-family: monospace;
+}
+
+.input-line {
+  display: flex;
+}
+
+.input-line > * {
+  flex: 1;
+}
+
+.input-line > .prompt {
+  flex: 0;
+  padding-right: 0.5rem;
+}
+
+.output {
+  padding-bottom: 0.5rem;
+}
+
+.input {
+  color: #ffa;
+}
+
+.output {
+  color: #afa;
+  white-space: pre;
+}
+
+form {
+  display: flex;
+}
+
+input {
+  flex: 1;
+  font-family: monospace;
+  background-color: #444;
+  color: #fff;
+  border: none;
+}
+
+/* episode 8: Terminal App Styling */
+/* body {
   background-color: #444;
   color: #fff
 }
@@ -53,4 +106,4 @@ input {
   background-color: #444;
   color: #fff;
   border: none;
-}
+} */
