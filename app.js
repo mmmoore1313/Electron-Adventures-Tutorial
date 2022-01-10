@@ -1,4 +1,7 @@
+// episode 9: Terminal App
+
 // episode 8: Terminal App Styling
+// syling was done mainly in the index.html and the app.css
 
 // episode 7: Visualize Free Disk Space in Terminal
 // episode7 was a run through of terminal visualization with Ruby
