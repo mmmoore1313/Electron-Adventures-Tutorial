@@ -1,4 +1,12 @@
 /* episode 12: Google Fonts for the Terminal */
+@font-face {
+  font-family: 'Nova Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('nova-mono-v13-latin-regular.woff2') format('woff2');
+}
+
 body {
   background-color: #444;
   color: #fff;
