@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('nova-mono-v13-latin-regular.woff2') format('woff2');
+       url('nova-mono-v13-latin/nova-mono-v13-latin-regular.woff2') format('woff2');
 }
 
 body {

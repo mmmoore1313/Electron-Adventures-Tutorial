@@ -1,6 +1,5 @@
 // episode 12: Google Fonts for the Terminal App
 let { app, BrowserWindow } = require("electron")
-const electronReload = require('electron-reload')
 
 function createWindow() {
   let win = new BrowserWindow({
