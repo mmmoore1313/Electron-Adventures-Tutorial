@@ -1,5 +1,5 @@
 // app.js is the JS that runs the frontend
-// episode 11: JQuery
+// episode 12: Google Fonts for our Terminal App
 function appendInput(command) {
   let e = $(
     `
@@ -28,6 +28,37 @@ $('form').on('submit', function(e) {
   $('input').val('')
   $('input')[0].scrollIntoView()
 })
+
+// episode 11: JQuery
+// function appendInput(command) {
+//   let e = $(
+//     `
+//       <div class='input-line'>
+//         <span class='prompt'>$</span>
+//         <span class='input'></span>
+//       </div>
+//     `
+//   )
+//   e.find('.input').text(command)
+//   $('#history').append(e)
+// }
+// 
+// function appendOutput(output) {
+//   let e = $(`<div class='output'></div>`)
+//   e.text(output)
+//   $('#history').append(e)
+// }
+// 
+// $('form').on('submit', function(e) {
+//   e.preventDefault()
+//   let command = $('input').val()
+//   let output = window.api.runCommand(command)
+//   appendInput(command)
+//   appendOutput(output)
+//   $('input').val('')
+//   $('input')[0].scrollIntoView()
+// })
+
 // episode 10: Preload Script
 // let form = document.querySelector("form")
 // let input = document.querySelector("input")
