@@ -18,6 +18,16 @@ function appendOutput(output) {
   e.text(output)
   $('#history').append(e)
 }
+
+$('form').on('submit', function(e) {
+  e.preventDefault()
+  let command = $('input').val()
+  let output = window.api.runCommand(command)
+  appendInput(command)
+  appendOutput(output)
+  $('input').val('')
+  $('input')[0].scrollIntoView()
+})
 // episode 10: Preload Script
 // let form = document.querySelector("form")
 // let input = document.querySelector("input")
