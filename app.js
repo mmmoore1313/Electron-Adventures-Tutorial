@@ -13,6 +13,11 @@ function appendInput(command) {
   $('#history').append(e)
 }
 
+function appendOutput(output) {
+  let e = $(`<div class='output'></div>`)
+  e.text(output)
+  $('#history').append(e)
+}
 // episode 10: Preload Script
 // let form = document.querySelector("form")
 // let input = document.querySelector("input")
