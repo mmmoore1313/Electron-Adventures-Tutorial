@@ -2,31 +2,28 @@
 // episode 12: Google Fonts for our Terminal App
 function appendInput(command) {
   let e = $(
-    `
-      <div class='input-line'>
-        <span class='prompt'>$</span>
-        <span class='input'></span>
-      </div>
-    `
-  )
+    `<div class='input-line'>
+      <span class='prompt'>$</span>
+      <span class='input'></span>
+    </div>`)
   e.find('.input').text(command)
-  $('#history').append(e)
+  $("#history").append(e)
 }
 
 function appendOutput(output) {
   let e = $(`<div class='output'></div>`)
   e.text(output)
-  $('#history').append(e)
+  $("#history").append(e)
 }
 
-$('form').on('submit', function(e) {
+$("form").on("submit", function(e) {
   e.preventDefault()
-  let command = $('input').val()
+  let command = $("input").val()
   let output = window.api.runCommand(command)
   appendInput(command)
   appendOutput(output)
-  $('input').val('')
-  $('input')[0].scrollIntoView()
+  $("input").val("")
+  $("input")[0].scrollIntoView()
 })
 
 // episode 11: JQuery
