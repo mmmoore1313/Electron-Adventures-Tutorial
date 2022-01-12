@@ -13,11 +13,11 @@ body {
 }
 
 h1 {
-  font-family: monospace;
+  font-family: Nova Mono, monospace;
 }
 
 #terminal {
-  font-family: monospace;
+  font-family: Nova Mono, monospace;
 }
 
 .input-line {
@@ -52,7 +52,7 @@ form {
 
 input {
   flex: 1;
-  font-family: monospace;
+  font-family: Nova Mono, monospace;
   background-color: #444;
   color: #fff;
   border: none;
