@@ -1,5 +1,7 @@
 // app.js is the JS that runs the frontend
 // episode 12: Google Fonts for our Terminal App
+
+   
 let form = document.querySelector("form")
 let input = document.querySelector("input")
 let terminalHistory = document.querySelector("#history")
