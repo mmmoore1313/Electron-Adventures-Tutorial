@@ -8,8 +8,8 @@
   }
 </script>
 
-<div class="input-line">
-  <span class="prompt">$</span>
+<div class='input-line'>
+  <span class='prompt'>$</span>
   <form on:submit|preventDefault={submit}>
     <input type='text' autofocus bind:value={command} />
   </form>

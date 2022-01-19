@@ -8,7 +8,7 @@ function createWindow() {
       preload: `${__dirname}/preload.js`
     },
   })
-  win.loadURL("http://localhost:5000/")
+  win.loadURL("http://localhost:8080/")
 }
 
 app.on('ready', createWindow)
