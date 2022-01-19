@@ -1,19 +1,16 @@
-let { app, BrowserWindow } = require('electron')
+let { app, BrowserWindow } = require("electron")
 
 function createWindow() {
   let win = new BrowserWindow({
-    width: 500px,
-    height: 500px,
-    wePreferences: {
+    webPreferences: {
       preload: `${__dirname}/preload.js`,
-    }
+    },
   })
-  
-  win.loadURL('http://localhost:3000/')
+  win.loadURL("http://localhost:3000/")
 }
 
-app.om('ready', createWindow)
+app.on("ready", createWindow)
 
-app.on('window-all-closed', () => {
+app.on("window-all-closed", () => {
   app.quit()
 })
