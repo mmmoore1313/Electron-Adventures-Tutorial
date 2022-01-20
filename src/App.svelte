@@ -9,7 +9,7 @@
     history.push(entry)
     history = history
     let onout = (data) => {
-      entery.stdout += data
+      entry.stdout += data
       history = history
     }
     let onerr = (data) => {
