@@ -3,7 +3,7 @@ let { contextBridge } = require("electron")
 
 let runCommand = (command) => {
   return new Promise((resolve, reject) => {
-    child_process.execSync(command, (error, stdout, stderr) => {
+    child_process.exec(command, (error, stdout, stderr) => {
       resolve({stdout, stderr, error})
     })
   })

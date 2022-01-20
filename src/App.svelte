@@ -1,14 +1,11 @@
 <script>
   import HistoryEntry from "./HistoryEntry.svelte"
   import CommandInput from "./CommandInput.svelte"
-  
   let history = []
-  
   async function onsubmit(command) {
     let entry = {command, stdout: "", stderr: "", error: null, running: true}
     history.push(entry)
     history = history
-    
     Object.assign(entry, {running: false}, await window.api.runCommand(command))
     history = history
   }
