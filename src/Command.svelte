@@ -9,10 +9,15 @@
     <span class='prompt'>$</span>
     <span class='input'>{command}</span>
   </div>
-  <div class='stdout'>{stdout}</div>
-  <div class='stderr'>{stderr}</div>
+  {#each interactions as interaction}
+    <div class={interaction.type}>{interaction.data}</div>
+  {/each}
   {#if running}
-    <Icon data={spinner} pulse />
+    <form on:submit|preventDefault={submit}>
+      <input type="text" bind:value={input} />
+      <button type='button' on:click={endInput}>End Input</button>
+      <button type='button' on:click={kill}>Kill</button>
+    </form>
   {/if}
   {#if error}
     <Icon data={exclamationTriangle} />
