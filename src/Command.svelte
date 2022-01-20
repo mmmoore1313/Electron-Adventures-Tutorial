@@ -1,7 +1,40 @@
 <script>
   import Icon from "svelte-awesome"
   import { spinner, exclamationTriangle } from "svelte-awesome/icons"
-  export let command, stdout, stderr, error, running
+  
+  export let command
+  
+  let running = true
+  let interactions = []
+  let error = false
+  let input = ""
+  
+  function onout(data) {
+    interactions.push({data, type: 'stdout'})
+    interactions = interactions
+  }
+  function onerr(data) {
+    interactions.push({data, type: 'stderr'})
+    interactions = interactions
+  }
+  function onedone(code) {
+    running = false
+    error = (code !== 0)
+  }
+  function endInput() {
+    proc.endInput()
+  }
+  function kill() {
+    proc.kill()
+  }
+  function submit() {
+    let data = input+"\n"
+    interactions.push({data, type: 'stdin'})
+    interactions = interactions
+    proc.input(data)
+    input = ""
+  }
+  let proc = window.api.runCommand({command,onout,onerr,ondone})
 </script>
 
 <div class='history-entry'>
@@ -28,6 +61,10 @@
   .history-entry {
     padding-bottom: 0.5rem;
   }
+  .stdin {
+    color: #ffa;
+    white-space: pre;
+  }
   .stdout {
     color: #afa;
     white-space: pre;
@@ -40,7 +77,7 @@
     display: flex;
     gap: 0.5rem;
   }
-  .input {
+  .command {
     color: #ffa;
     flex: 1;
   }
