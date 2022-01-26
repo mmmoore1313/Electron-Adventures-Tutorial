@@ -18,7 +18,7 @@
   }
   function formatName(entry) {
     if (entry.linkTarget) {
-      return `${entry.name} -> ${entry.linkTarget}`
+      return `${entry.name} → ${entry.linkTarget}`
     } else {
       return entry.name
     }
@@ -29,8 +29,9 @@
 
 {#await filesPromise}
 {:then files}
+  <div  class="file-list">
   {#if !isRoot}
-    <div class='file-list'>
+    <div>
       <button on:click={() => navigateUp()}>..</button>
     </div>
     <div></div>
@@ -60,6 +61,7 @@
       {formatDate(entry.mtime)}
     </div>
   {/each}
+  </div>
 {/await}
 
 <style>
