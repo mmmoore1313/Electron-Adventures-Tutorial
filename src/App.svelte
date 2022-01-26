@@ -2,6 +2,7 @@
   let directory = window.api.currentDirectory()
   $: filesPromise = window.api.directoryContents(directory)
   $: isRoot = (directory === "/")
+  
   function navigate(path) {
     if (directory === "/") {
       directory = "/" + path
@@ -12,6 +13,16 @@
   function navigateUp() {
     directory = directory.split("/").slice(0, -1).join("/") || "/"
   }
+  function formatDate(d) {
+    return d ? d.toDateString() : ""
+  }
+  function formatName(entry) {
+    if (entry.linkTarget) {
+      return `${entry.name} -> ${entry.linkTarget}`
+    } else {
+      return entry.name
+    }
+  }
 </script>
 
 <h1>{directory}</h1>
@@ -19,16 +30,35 @@
 {#await filesPromise}
 {:then files}
   {#if !isRoot}
-    <div><button on:click={() => navigateUp()}>..</button></div>
+    <div class='file-list'>
+      <button on:click={() => navigateUp()}>..</button>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
   {/if}
   {#each files as entry}
     {#if entry.type === "directory"}
       <div>
-        <button on:click={() => navigate(entry.name)}>{entry.name}</button>
+        <button on:click={() => navigate(entry.name)}>
+          {formatName(entry)}
+        </button>
       </div>
     {:else}
-      <div>{entry.name}</div>
+      <div>
+        {formatName(entry)}
+      </div>
     {/if}
+    <div>
+      {entry.type}
+      {entry.linkTarget ? " link" : ""}
+    </div>
+    <div>
+      {entry.size ? entry.size : ""}
+    </div>
+    <div>
+      {formatDate(entry.mtime)}
+    </div>
   {/each}
 {/await}
 
@@ -36,6 +66,10 @@
   :global(body) {
     background-color: #444;
     color: #ccc;
+  }
+  .file-list {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
   }
 </style>
 
