@@ -1,5 +1,5 @@
 let { readdir } = require("fs/promises")
-let { comtextBridge } = require('electron')
+let { contextBridge } = require('electron')
 
 let directoryContents = async (path) => {
   let results = await readdir(path, {withFileTypes: true})
