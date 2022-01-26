@@ -1,11 +1,36 @@
 let { ipcRenderer } = require('electron')
-let messages = document.querySelector('#messages')
+let localIncrement = (x) => (x+1)
 
-ipcRenderer.on("line", (event, line) => {
-  let message = document.createElement("div")
-  message.textContent = line
-  messages.appendChild(message)
-})
+let benchmarkLocal = async () => {
+  let startTime = new Date()
+  let x = 0
+  while (x < 100_000_000) {
+    x = localIncrement(x)
+  }
+  let endTime = new Date()
+  return endTime - startTime
+}
+
+let benchmarkIPC = async () => {
+  let startTime = new Date()
+  let x = 0
+  while (x < 10_000) {
+    x = await ipcRenderer.invoke("increment", x)
+  }
+  let endTime = new Date()
+  return endTime - startTime
+}
+
+let runBenchmark = async () => {
+  let results = document.querySelector("#results")
+  results.textContent = `
+    10k IPC calls took: ${await benchmarkIPC()}ms
+    100M local calls took: ${await benchmarkLocal()}ms
+  `
+}
+
+runBenchmark()
+
 // ep19 Data to Front End
 // let { ipcRenderer } = require('electron')
 // let messages = document.querySelector('#messages')
