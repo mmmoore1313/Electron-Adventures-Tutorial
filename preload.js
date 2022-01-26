@@ -1,12 +1,20 @@
-let child_process = require("child_process")
+let { readdir } = require("fs/promises")
 let { contextBridge } = require("electron")
 
-let runCommand = (command) => {
-  return child_process.execSync(command).toString().trim()
+let directoryContents = async (path) => {
+  let results = await readdir(path, {withFileTypes: true})
+  return results.map(entry => ({
+    name: entry.name,
+    type: entry.isDirectory() ? "directory" : "file",
+  }))
+}
+
+let currentDirectory = () => {
+  return process.cwd()
 }
 
 contextBridge.exposeInMainWorld(
-  "api", { runCommand }
+  "api", { directoryContents, currentDirectory }
 )
 
 // ep13: Svelte
