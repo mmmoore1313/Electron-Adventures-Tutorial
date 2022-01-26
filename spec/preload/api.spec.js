@@ -8,7 +8,7 @@ test("currentDirectory", () => {
 test("directoryContents", async () => {
   let examplesDir = `${__dirname}/examples`
   let result = await api.directoryContents(examplesDir)
-  
+
   expect(result).toMatchObject([
     {
       linkTarget: null,
@@ -25,7 +25,8 @@ test("directoryContents", async () => {
       type: "file",
     },
     {
-      linkTarget: "example_03",
+      linkTarget: null,
+      name: "example_03",
       mtime: expect.anything(),
       type: "directory",
     },
@@ -39,6 +40,6 @@ test("directoryContents", async () => {
       linkTarget: "example_05.md",
       name: "missing",
       type: "broken",
-    }
+    },
   ])
 })
