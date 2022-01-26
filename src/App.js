@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import usePromise from 'react-use-promise'
 
-function App() {
+export default function App(props) {
+  let [directory, setDirectory] = useState(window.api.currentDirectory())
+  let isRoot = (directory ==='/')
+  
+  let [files, filesError, filesState] = usePromise(() => (
+    window.api.directoryContents(directory)
+  ), [directory])
+  
+  let navigate = (path) => {
+    if (directory === "/") {
+      setDirectory("/" + path)
+    } else {
+      setDirectory(directory + "/" + path)
+    }
+  }
+  
+  let navigateUp = () => {
+    setDirectory(directory.split("/").slice(0, -1).join("/") || "/")
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>{directory}</h1>
+      {!isRoot && <div><button onClick={() => navigateUp()}>..</button></div> }
+      {files && files.map((entry, i) => (
+        (entry.type === "directory") ? (
+          <div key={i}>
+            <button onClick={() => navigate(entry.name)}>{entry.name}</button>
+          </div>
+        ) : (
+          <div key={i}>{entry.name}</div>
+        )
+      ))}}
+    </>
+  )
 }
-
-export default App;
