@@ -2,7 +2,6 @@
   let directory = window.api.currentDirectory()
   $: filesPromise = window.api.directoryContents(directory)
   $: isRoot = (directory === "/")
-  
   function navigate(path) {
     if (directory === "/") {
       directory = "/" + path
@@ -20,30 +19,24 @@
 {#await filesPromise}
 {:then files}
   {#if !isRoot}
-    <div>
-      <button on:click={() => navigateUp()}>..</button>
-    </div>
+    <div><button on:click={() => navigateUp()}>..</button></div>
   {/if}
   {#each files as entry}
     {#if entry.type === "directory"}
       <div>
-        <button on:click={() => navigate(entry.name)}>
-          {entry.name}
-        </button>
+        <button on:click={() => navigate(entry.name)}>{entry.name}</button>
       </div>
     {:else}
-      <div>
-        {entry.name}
-      </div>
+      <div>{entry.name}</div>
     {/if}
   {/each}
 {/await}
 
 <style>
-:global(body) {
-  background-color: #444;
-  color: #ccc;
-}
+  :global(body) {
+    background-color: #444;
+    color: #ccc;
+  }
 </style>
 
 <!-- 
