@@ -1,0 +1,23 @@
+{
+  "name": "electronadventures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmmoore1313/Electron-Adventures-Tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmmoore1313/Electron-Adventures-Tutorial/issues"
+  },
+  "homepage": "https://github.com/mmmoore1313/Electron-Adventures-Tutorial#readme",
+  "devDependencies": {
+    "electron": "^16.0.7"
+  }
+}
