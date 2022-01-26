@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
-import CommandInput from './CommandInput'
-import HistoryEntry from './HistoryEntry'
+import logo from './logo.svg';
+import './App.css';
 
-export default function App(props) {
-  let [history, setHistory] = useState([])
-  
-  let onsubmit = (command) => {
-    let output = window.api.runCommand(command)
-    setHistory([...history, { command, output }])
-  }
-  
+function App() {
   return (
-    <>
-      <h1>The Reaction... It's Terminal</h1>
-      {history.map(({command, output}, index) => (
-          <HistoryEntry key={index} command={command} output={output} />
-      ))}
-      <CommandInput onsubmit={onsubmit} />
-    </>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
-};
+}
+
+export default App;
