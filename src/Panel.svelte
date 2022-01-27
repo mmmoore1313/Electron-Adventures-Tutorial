@@ -22,7 +22,7 @@
 </script>
 
 <div class="panel {position}" class:active={active}>
-  {#each file as file}
+  {#each files as file}
     <div
       class="file"
       class:focused={file === focused}
