@@ -2,7 +2,7 @@ let { app, BrowserWindow } = require("electron")
 
 function createWindow() {
   let win = new BrowserWindow({})
-  win.loadFile("index.html")
+  win.loadURL("http://localhost:8080/")
 }
 
 app.on("ready", createWindow)
