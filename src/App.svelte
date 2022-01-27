@@ -2,7 +2,7 @@
   import Panel from "./Panel.svelte"
   import Footer from "./Footer.svelte"
   
-  let activPanel = "left"
+  let activePanel = "left"
   let filesLeft = [
     "Cat.js",
     "ipsum.js",
@@ -37,7 +37,7 @@
     "tail.png",
   ]
 </script>
-<div clas='ui'>
+<div class='ui'>
   <header>
     File Manager
   </header>
@@ -45,13 +45,13 @@
     files={filesLeft}
     position="left"
     active={activePanel === "left"}
-    onActivate={() => activePanel ="left"}
+    onActivate={() => activePanel = "left"}
   />
   <Panel
     files={filesRight}
     position="right"
     active={activePanel === "right"}
-    onActivate={() => activePanel ="right"}
+    onActivate={() => activePanel = "right"}
   />
   <Footer />
 </div>
