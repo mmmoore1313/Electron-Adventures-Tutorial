@@ -21,7 +21,7 @@
   }
 </script>
 
-<div class="panel {position}" class:active{active}>
+<div class="panel {position}" class:active={active}>
   {#each file as file}
     <div
       class="file"
