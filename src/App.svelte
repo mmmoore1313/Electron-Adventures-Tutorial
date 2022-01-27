@@ -1,3 +1,42 @@
+<script>
+  import Panel from "./Panel.svelte"
+  import Footer from "./Footer.svelte"
+  
+  let activPanel = "left"
+  let filesLeft = [
+    "Cat.js",
+    "ipsum.js",
+    "dolor.js",
+    "sit.js",
+    "amet.js",
+    "walk.js",
+    "on.js",
+    "keyboard.js",
+    "hide.js",
+    "when.js",
+    "guests.js",
+    "come.js",
+    "over.js",
+    "play.js",
+    "with.js",
+    "twist.js",
+    "ties.js",
+  ]
+  let filesRight = [
+    "Ask.png",
+    "to.png",
+    "be.png",
+    "pet.png",
+    "then.png",
+    "attack.png",
+    "owners.png",
+    "hand.png",
+    "need.png",
+    "to.png",
+    "chase.png",
+    "tail.png",
+  ]
+</script>
 <div clas='ui'>
   <header>
     File Manager
