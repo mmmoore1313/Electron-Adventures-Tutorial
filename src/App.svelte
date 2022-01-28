@@ -36,6 +36,16 @@
     "chase.png",
     "tail.png",
   ]
+  let handleKey = (e) => {
+    if (e.key === "Tab") {
+      if (activePanel === "left") {
+        activePanel = "right"
+      } else {
+        activePanel = "left"
+      }
+      e.preventDefault()
+    }
+  }
 </script>
 <div class='ui'>
   <header>
@@ -55,6 +65,8 @@
   />
   <Footer />
 </div>
+
+<svelte:window on:keydown={handleKey} />
 
 <style>
   :global(body) {
