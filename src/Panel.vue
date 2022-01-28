@@ -5,7 +5,7 @@
     data: (e) => {
       return {
         focused: e.$props.files[0],
-        elected: [],
+        selected: [],
       }
     },
     methods: {
@@ -52,7 +52,7 @@
         if (e.key === " ") {
           e.preventDefault()
           this.flipSelected(this.$data.focused)
-          this.goDown
+          this.goDown()
         }
       },
     },
@@ -64,13 +64,14 @@
 
 <template>
   <div v-bind:class="{
-      panel: true,
-      active: active,
-      left: (position==='left'),
-      right: (position==='right'),
-    }">
+        panel: true,
+        active: active,
+        left: (position==='left'),
+        right: (position==='right'),
+      }">
     <div
-      v-for="file in files"
+      v-for="(file, index) in files"
+      :key="file.id"
       v-bind:class="{
         file: true,
         focused: (file === focused),
@@ -79,7 +80,7 @@
       @click="() => onclick(file)"
       @contextmenu="() => onrightclick(file)"
     >
-      {{file}}
+      {{index}}{{file}}
     </div>
   </div>
 </template>

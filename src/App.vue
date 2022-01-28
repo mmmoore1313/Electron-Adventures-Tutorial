@@ -1,9 +1,9 @@
 <script>
-  import Panel from './Panel.vue'
-  import Footer from './Footer.vue'
-  
+  import Panel from "./Panel.vue"
+  import Footer from "./Footer.vue"
+
   export default {
-    name: 'App',
+    name: "App",
     components: {
       Panel,
       Footer,
@@ -57,7 +57,7 @@
           if (this.$data.activePanel === "left") {
             this.$data.activePanel = "right"
           } else {
-            this.$data.activePAnel = "left"
+            this.$data.activePanel = "left"
           }
         }
       }
