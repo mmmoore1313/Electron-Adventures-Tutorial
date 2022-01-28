@@ -13,10 +13,43 @@
   let onrightclick = (file) => {
     onActivate(position)
     focused = file
+    flipSelected(file)
+  }
+  let flipSelected = (file) => {
     if (selected.includes(file)) {
       selected = selected.filter(f => f !== file)
     } else {
       selected = [...selected, file]
+    }
+  }
+  let goUp = () => {
+    let i = files.indexOf(focused)
+    if (i > 0) {
+      focused = files[i - 1]
+    }
+  }
+  let goDown = () => {
+    let i = files.indexOf(focused)
+    if (i < files.length - 1) {
+      focused = files[i + 1]
+    }
+  }
+  let handleKey = (e) => {
+    if (!active) {
+      return
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault()
+      goDown()
+    }
+    if (e.key === "ArrowUp") {
+      e.preventDefault()
+      goUp()
+    }
+    if (e.key === " ") {
+      e.preventDefault()
+      flipSelected(focused)
+      goDown()
     }
   }
 </script>
@@ -33,6 +66,8 @@
     </div>
   {/each}
 </div>
+
+<svelte:window on:keydown={handleKey}/>
 
 <style>
   .panel-left {
