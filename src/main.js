@@ -1,3 +1,4 @@
-import App from './App.svelte'
-let app = new App({target: document.body})
-export default app
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
