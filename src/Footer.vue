@@ -1,18 +1,20 @@
 <script>
-  items: [
-    { name: 'F1 Help' },
-    { name: 'F2 Menu' },
-    { name: 'F3 View' },
-    { name: 'F4 Edit' },
-    { name: 'F5 Copy' },
-    { name: 'F6 Move' },
-    { name: 'F7 Mkdir' },
-    { name: 'F8 Delete' },
-    { name: 'F10 Quit' },
-  ]
-  
   export default {
-    name: "Footer"
+    name: "Footer",
+    props: ["fButtons"]
+    data: {
+      items: [
+        { name: 'F1 Help' },
+        { name: 'F2 Menu' },
+        { name: 'F3 View' },
+        { name: 'F4 Edit' },
+        { name: 'F5 Copy' },
+        { name: 'F6 Move' },
+        { name: 'F7 Mkdir' },
+        { name: 'F8 Delete' },
+        { name: 'F10 Quit' },
+      ]
+    }
   }
 </script>
 
