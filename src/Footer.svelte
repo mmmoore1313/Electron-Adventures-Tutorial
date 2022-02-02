@@ -1,4 +1,14 @@
 <script>
+  let quitCommand = (e) => {
+    window.close()
+  }
+  
+  let handleKey = (e) => {
+    if (e.key === "F10") {
+      e.preventDefault()
+      quitCommand()
+    }
+  }
   let opts = [
     { name: 'F1 Help' },
     { name: 'F2 Menu' },
@@ -12,17 +22,6 @@
       action: {quitCommand}
     },
   ]
-  
-  let quitCommand = (e) => {
-    window.close()
-  }
-  
-  let handleKey = (e) => {
-    if (e.key === "F10") {
-      e.preventDefault()
-      quitCommand()
-    }
-  }
 </script>
 
 <footer>
