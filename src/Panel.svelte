@@ -3,7 +3,9 @@
   export let directory
   export let active
   export let onActivate
-  
+  let files = []
+  let selected = []
+  let focusedIdx = 0
   $: filesPromise = window.api.directoryContents(directory)
   $: filesPromise.then(x => {
     files = x
@@ -11,7 +13,6 @@
     selected = []
   })
   $: filesCount = files.length
-
   let onclick = (idx) => {
     onActivate()
     focusedIdx = idx
@@ -34,7 +35,7 @@
     }
   }
   let goDown = () => {
-    if (focusedIdx < filesCount -1) {
+    if (focusedIdx < filesCount - 1) {
       focusedIdx += 1
     }
   }
@@ -42,7 +43,7 @@
     if (!active) {
       return
     }
-    if (e.key == "ArrowDown") {
+    if (e.key === "ArrowDown") {
       e.preventDefault()
       goDown()
     }
@@ -59,9 +60,7 @@
 </script>
 
 <div class="panel {position}" class:active={active}>
-  <header>
-    {directory.split("/").slice(-1)[0]}
-  </header>
+  <header>{directory.split("/").slice(-1)[0]}</header>
   <div class="file-list">
     {#each files as file, idx}
       <div
@@ -70,9 +69,7 @@
         class:selected={selected.includes(idx)}
         on:click|preventDefault={() => onclick(idx)}
         on:contextmenu|preventDefault={() => onrightclick(idx)}
-      >
-        {file.name}
-      </div>
+      >{file.name}</div>
     {/each}
   </div>
 </div>
@@ -99,6 +96,9 @@
   .file-list {
     flex: 1;
     overflow-y: scroll;
+  }
+  .file {
+    cursor: pointer;
   }
   .file.selected {
     color: #ff2;
