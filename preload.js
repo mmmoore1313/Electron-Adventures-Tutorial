@@ -2,6 +2,11 @@ let { contextBridge } = require("electron")
 let api = require("./preload/api")
 
 contextBridge.exposeInMainWorld("api", api)
+// ep27: keyboard stuff
+// let { contextBridge } = require("electron")
+// let api = require("./preload/api")
+// 
+// contextBridge.exposeInMainWorld("api", api)
 
 // ep23: Display Info About Files
 // let path = require("path")

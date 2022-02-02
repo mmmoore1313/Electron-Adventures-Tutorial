@@ -1,21 +1,38 @@
-let { app, BrowserWindow } = require('electron')
+let { app, BrowserWindow } = require("electron")
 
 function createWindow() {
   let win = new BrowserWindow({
-    width: 900, 
-    height: 680,
     webPreferences: {
-      preload: `${__dirname}/preload.js`
+      preload: `${__dirname}/preload.js`,
     },
   })
-  win.loadURL("http://localhost:8080/")
+  win.loadURL("http://localhost:5000/")
 }
 
-app.on('ready', createWindow)
+app.on("ready", createWindow)
 
-app.on('window-all-closed', () => {
+app.on("window-all-closed", () => {
   app.quit()
 })
+// ep 27: keyboard stuffs
+// let { app, BrowserWindow } = require('electron')
+// 
+// function createWindow() {
+//   let win = new BrowserWindow({
+//     width: 900, 
+//     height: 680,
+//     webPreferences: {
+//       preload: `${__dirname}/preload.js`
+//     },
+//   })
+//   win.loadURL("http://localhost:8080/")
+// }
+// 
+// app.on('ready', createWindow)
+// 
+// app.on('window-all-closed', () => {
+//   app.quit()
+// })
 
 
 // ep13: Svelte
