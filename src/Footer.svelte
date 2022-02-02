@@ -8,17 +8,32 @@
     { name: 'F6 Move' },
     { name: 'F7 Mkdir' },
     { name: 'F8 Delete' },
-    { name: 'F10 Quit' },
+    { name: 'F10 Quit',
+      action: {quitCommand}
+    },
   ]
+  
+  let quitCommand = (e) => {
+    window.close()
+  }
+  
+  let handleKey = (e) => {
+    if (e.key === "F10") {
+      e.preventDefault()
+      quitCommand()
+    }
+  }
 </script>
 
 <footer>
-  {#each opts as { name } }
-    <button>
+  {#each opts as { name, action } }
+    <button on:click={action}>
       {name}
     </button>
   {/each}
 </footer>
+
+<svelte:window on:keydown={handleKey} />
 
 <style>
   footer {

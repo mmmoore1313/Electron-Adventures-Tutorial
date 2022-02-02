@@ -1,68 +1,42 @@
 <script>
-  let directory = window.api.currentDirectory()
-  $: filesPromise = window.api.directoryContents(directory)
-  $: isRoot = (directory === "/")
+  import Panel from './Panel.svelte'
+  import Footer from './Footer.svelte'
   
-  function navigate(path) {
-    if (directory === "/") {
-      directory = "/" + path
-    } else {
-      directory += "/" + path
-    }
-  }
-  function navigateUp() {
-    directory = directory.split("/").slice(0, -1).join("/") || "/"
-  }
-  function formatDate(d) {
-    return d ? d.toDateString() : ""
-  }
-  function formatName(entry) {
-    if (entry.linkTarget) {
-      return `${entry.name} → ${entry.linkTarget}`
-    } else {
-      return entry.name
+  let activePanel = 'left'
+  let directoryLeft = window.api.currentDirectory()
+  let directoryRight = window.api.currentDirectory() + "/node_modules"
+  let handleKey = (e) => {
+    if (e.key === "Tab") {
+      if (acitvePanel === "left") {
+        activePanel = "right"
+      } else {
+        activePanel = "left"
+      }
+      e.preventDefault()
     }
   }
 </script>
 
-<h1>{directory}</h1>
+<div class='ui'>
+  <header>
+    File Manager
+  </header>
+  <Panel
+    directory={directoryLeft}
+    position="left"
+    active={activePanel === "left"}
+    onActivate={() => activePanel = "left"}
+  />
+  <Panel
+    directory={directoryRight}
+    position="right"
+    active={activePanel === "right"}
+    onActivate={() => activePanel = "right"}
+  />
+  <Footer />
+</div>
 
-{#await filesPromise}
-{:then files}
-  <div  class="file-list">
-  {#if !isRoot}
-    <div>
-      <button on:click={() => navigateUp()}>..</button>
-    </div>
-    <div></div>
-    <div></div>
-    <div></div>
-  {/if}
-  {#each files as entry}
-    {#if entry.type === "directory"}
-      <div>
-        <button on:click={() => navigate(entry.name)}>
-          {formatName(entry)}
-        </button>
-      </div>
-    {:else}
-      <div>
-        {formatName(entry)}
-      </div>
-    {/if}
-    <div>
-      {entry.type}
-      {entry.linkTarget ? " link" : ""}
-    </div>
-    <div>
-      {entry.size ? entry.size : ""}
-    </div>
-    <div>
-      {formatDate(entry.mtime)}
-    </div>
-  {/each}
-  </div>
-{/await}
+<svelte:window on:keydown={handleKey} />
 
 <style>
   :global(body) {
